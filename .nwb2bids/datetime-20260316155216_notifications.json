@@ -1,0 +1,67 @@
+[
+  {
+    "identifier": "InvalidDandisetMetadata",
+    "title": "INFO: invalid Dandiset metadata",
+    "reason": "This Dandiset has invalid metadata.",
+    "solution": "Required dataset description fields are inferred from the raw metadata instead.",
+    "examples": null,
+    "field": null,
+    "data_standards": null,
+    "source_file_paths": null,
+    "target_file_paths": null,
+    "category": "INTERNAL_ERROR",
+    "severity": "INFO"
+  },
+  {
+    "identifier": "MissingParticipantSex",
+    "title": "Missing participant sex",
+    "reason": "Archives such as DANDI or EMBER require the subject sex to be specified.",
+    "solution": "Specify the `sex` field of the Subject object attached to the NWB file as one of four options: \"M\" (for male), \"F\" (for female), \"U\" (for unknown), or \"O\" (for other).\nNOTE: for certain animal species with more specific genetic determinants, such as C elegans, use \"O\" (for other) then further specify the subtypes using other custom fields. For example, `c_elegans_sex=\"XO\"`",
+    "examples": null,
+    "field": "nwbfile.subject.sex",
+    "data_standards": [
+      "DANDI"
+    ],
+    "source_file_paths": null,
+    "target_file_paths": null,
+    "category": "SCHEMA_INVALIDATION",
+    "severity": "CRITICAL"
+  },
+  {
+    "identifier": "MissingSpecies",
+    "title": "Missing participant species",
+    "reason": "Archives such as DANDI or EMBER require the subject species to be specified.",
+    "solution": "Specify the `species` field of the Subject object attached to the NWB file as a Latin binomial, obolibrary taxonomy link, or NCBI taxonomy reference.",
+    "examples": null,
+    "field": "nwbfile.subject.species",
+    "data_standards": [
+      "DANDI"
+    ],
+    "source_file_paths": null,
+    "target_file_paths": null,
+    "category": "SCHEMA_INVALIDATION",
+    "severity": "CRITICAL"
+  },
+  {
+    "identifier": "InvalidSessionID",
+    "title": "Invalid session ID",
+    "reason": "The session ID contains invalid characters. BIDS allows only the plus sign to be used as a separator in the subject entity label. Underscores, dashes, spaces, slashes, and other special characters (including #) are expressly forbidden.",
+    "solution": "Rename the session without using any special characters except for `+`.",
+    "examples": [
+      "`ses_01` -> `ses+01`",
+      "`session #2` -> `session+2`",
+      "`id 2 from 9/1/25` -> `id+2+9+1+25`"
+    ],
+    "field": "nwbfile.session_id",
+    "data_standards": [
+      "BIDS",
+      "DANDI"
+    ],
+    "source_file_paths": [
+      "https://dandiarchive.s3.amazonaws.com/blobs/e57/c5b/e57c5bf0-9ef9-4154-9aa3-3a5fa54c6fea"
+    ],
+    "target_file_paths": null,
+    "category": "STYLE_SUGGESTION",
+    "severity": "ERROR"
+  }
+]
