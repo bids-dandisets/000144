@@ -1,3 +1,4 @@
 {
-    "participant_id": "A unique identifier for this participant."
+    "participant_id": "A unique identifier for this participant.",
+    "original_participant_id": "The original participant identifier before sanitization."
 }
